@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sending/modules/tabs_navBar/browse_screen.dart';
-import 'package:sending/modules/tabs_navBar/home_screen.dart';
+import 'package:sending/modules/tabs_navBar/home/home_screen.dart';
 import 'package:sending/modules/tabs_navBar/search_screen.dart';
 import 'package:sending/modules/tabs_navBar/watch_list_screen.dart';
 
