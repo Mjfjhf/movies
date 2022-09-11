@@ -5,6 +5,7 @@ import 'package:sending/models/LatestResponse.dart';
 import 'package:sending/models/TopRatedRespons.dart';
 
 import '../../models/movies_respose.dart';
+import '../../modules/tabs_navBar/Search/Api_Search.dart';
 
 class ApiManager{
   static Future<MoviesResponse> getMoviesPopular()async{
@@ -46,6 +47,22 @@ class ApiManager{
       var bodyString= getdta.body;
       var json= jsonDecode(bodyString);
       var res= TopRatedRespons.fromJson(json);
+      return res;
+    }catch (e){
+      throw e;
+    }
+
+  }
+  static Future<ApiSearch> getSearch(String q)async{
+    var uri= Uri.https("api.themoviedb.org", "/3/search/movie",{
+      "api_key" : "8447f6d466cb085704029ad005725822",
+      "query":q
+    });
+    var getdta=await http.get(uri);
+    try{
+      var bodyString= getdta.body;
+      var json= jsonDecode(bodyString);
+      var res= ApiSearch.fromJson(json);
       return res;
     }catch (e){
       throw e;

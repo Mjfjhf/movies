@@ -31,7 +31,8 @@ class FeachTopRated extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8.0,right: 8,bottom: 8),
                     child: Stack(
                       children: [
-                        Image.network("https://image.tmdb.org/t/p/original/${listOfTopRated[index].backdropPath}"??''
+                        Image.network("https://image.tmdb.org/t/p/original/${listOfTopRated[index].backdropPath}"==null?
+                        "https://image.tmdb.org/t/p/original/2u1YBNBlSwvBReyvI7i5z5ykQXP.jpg":"https://image.tmdb.org/t/p/original/${listOfTopRated[index].backdropPath}"
                           ,height: 150,width: 100,fit: BoxFit.fitHeight,),
                         Icon(Icons.bookmark_add_rounded,size: 55,color: Colors.white,)
                       ],
