@@ -13,10 +13,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(flex:6,child: FechLatestApi()),
-        Expanded(flex:3,child: FechPopularApi()),
-        SizedBox(height: 7,),
-        Expanded(flex:3,child: FeachTopRated()),
+        Padding(
+          padding: const EdgeInsets.all(3.0),
+          child: FechLatestApi(),
+        ),
+        SizedBox(height: 10,),
+        Expanded(child: FechPopularApi()),
+        SizedBox(height: 5,),
+        Expanded(child: FeachTopRated()),
       ],
     );
   }

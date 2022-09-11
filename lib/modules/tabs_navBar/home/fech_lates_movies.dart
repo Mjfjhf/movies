@@ -67,7 +67,7 @@ class _FechLatestApiState extends State<FechLatestApi> {
                     ],
                   ),
                 ),
-                Text(listOfLatest?.title??'',style: TextStyle(color: Colors.white),)
+                Text(listOfLatest.title??'',style: TextStyle(color: Colors.white),)
               ],
             ),
           );

@@ -25,11 +25,13 @@ class FechPopularApi extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+
                 Text("   New Relleases",style: TextStyle(
                   fontSize: 17,
-                  //fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w600,
                   color: Colors.white
                 ),textAlign: TextAlign.start,),
+                SizedBox(height: 7,),
                 Expanded(
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -44,9 +46,9 @@ class FechPopularApi extends StatelessWidget {
                             padding: const EdgeInsets.only(left: 8.0,right: 8,bottom: 8),
                             child: Stack(
                               children: [
-                                Image.network("https://image.tmdb.org/t/p/original/${listOfPopular[index].backdropPath}"??''
+                                Image.network("https://image.tmdb.org/t/p/original/${listOfPopular[index].backdropPath}"
                                   ,height: 200,width: 100,fit: BoxFit.fitHeight,),
-                                Icon(Icons.bookmark_add_rounded,size: 55,color: Colors.white,)
+                                Icon(Icons.bookmark_add_rounded,size: 45,color: Colors.white,)
                               ],
                             ),
                           ),
