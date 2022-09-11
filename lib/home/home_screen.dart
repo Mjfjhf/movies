@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sending/modules/tabs_navBar/browse_screen.dart';
 import 'package:sending/modules/tabs_navBar/home/home_screen.dart';
-import 'package:sending/modules/tabs_navBar/search_screen.dart';
+import 'package:sending/modules/tabs_navBar/Search/My_search.dart';
 import 'package:sending/modules/tabs_navBar/watch_list_screen.dart';
+
+import '../modules/tabs_navBar/Search/Search.dart';
+import '../provid/my_provider.dart';
 
 class HomePage extends StatefulWidget {
  static const String routename= "Home_page";
@@ -16,6 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Color(0xff121312),
       bottomNavigationBar: Theme(
@@ -30,7 +35,7 @@ class _HomePageState extends State<HomePage> {
           currentIndex: neindex,
           items: [
             BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/home_icon.png')),label: "Home"),
-            BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/search.png')),label: "Search"),
+            BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/search.png')),label: "Search",),
             BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/browser_icon.png')),label: "Browse"),
             BottomNavigationBarItem(icon: ImageIcon(AssetImage('assets/images/watch_list_icon.png')),label: "WatchList"),
           ],

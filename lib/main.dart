@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sending/home/home_screen.dart';
+import 'package:sending/provid/my_provider.dart';
 
 main(){
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context){
+
+        return MyProviderApp();
+      },
+      child: MyApp()));
 }
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
