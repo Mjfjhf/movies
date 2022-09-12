@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sending/modules/tabs_navBar/browse_screen.dart';
+import 'package:sending/modules/tabs_navBar/browser/Screen/browser_screen.dart';
 import 'package:sending/modules/tabs_navBar/home/home_screen.dart';
 import 'package:sending/modules/tabs_navBar/Search/My_search.dart';
 import 'package:sending/modules/tabs_navBar/watch_list_screen.dart';
@@ -47,7 +48,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> tabs=[
     HomeScreen(),
     SearchScreen(),
-    BrowsScreen(),
+    BrowserScreen(),
     WachListScreen()
   ];
 }

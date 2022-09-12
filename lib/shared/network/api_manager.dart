@@ -1,11 +1,12 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:sending/models/LatestResponse.dart';
 import 'package:sending/models/TopRatedRespons.dart';
-
+import '../../models/category_movie.dart';
+import '../../models/filtred_movies.dart';
 import '../../models/movies_respose.dart';
 import '../../modules/tabs_navBar/Search/Api_Search.dart';
+import '../components/constant.dart';
 
 class ApiManager{
   static Future<MoviesResponse> getMoviesPopular()async{
@@ -68,6 +69,50 @@ class ApiManager{
       throw e;
     }
 
+  }
+
+
+  // get Category Movies
+  static Future <CategoryMovie> getCategory() async {
+    var url = Uri.https(BASEURL, '/3/genre/movie/list', {
+      "api_key": APIKEY,
+    });
+
+    try {
+
+      var response = await http.get(url);
+
+      var bodyCategory = response.body;
+
+      var json = jsonDecode(bodyCategory);
+
+      return  CategoryMovie.fromJson(json);
+    } catch (e) {
+
+      throw e;
+    }
+  }
+
+// get Filtered Movies
+  static Future <FiltredMovies> getFiltered(String genres) async {
+    var url = Uri.https(BASEURL, '/3/discover/movie', {
+      "api_key": APIKEY,
+      "with_genres": genres,
+    });
+
+    try {
+
+      var response = await http.get(url);
+
+      var bodyCategory = response.body;
+
+      var json = jsonDecode(bodyCategory);
+
+      return  FiltredMovies.fromJson(json);
+    } catch (e) {
+
+      throw e;
+    }
   }
 }
 
