@@ -74,37 +74,34 @@ class _SearchScreenState extends State<SearchScreen> {
           Row(
             children: [
               Expanded(
-                child: TextFormField(
-                  controller: searchcontroller,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 1.0),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white, width: 1.0),
-                    ),
-                    hintText: 'Tell us about yourself',
+                child: Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: TextFormField(
+                    style: TextStyle(color: Colors.white),
+                    controller: searchcontroller,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(110.0),
+                      ),
+                      filled: true,
+                      hintText: 'Tell us about yourself',
 
-                    //helperText: 'Keep it short, this is just a demo.',
-                    prefixIcon:  Icon(
-                      Icons.person,
-                      color: Colors.yellow,
+                      //helperText: 'Keep it short, this is just a demo.',
+                      prefixText: ' ',
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            gitsearch();
+                          },
+                          icon:  Icon(
+                            Icons.search,
+                            color: Colors.white,
+                          )),
+                      fillColor: Color(0xff514F4F),
+                      labelText: 'Search',
+                      focusColor: Color(0xFFFFFFFF),
                     ),
-                    prefixText: ' ',
-                    suffixIcon: IconButton(
-                        onPressed: () {
-                          gitsearch();
-                        },
-                        icon:  Icon(
-                          Icons.search,
-                          color: Colors.yellow,
-                        )),
 
-                    fillColor: Colors.white,
-                    labelText: 'Search',
-                    focusColor: Color(0xFFFFFFFF),
                   ),
-
                 ),
               ),
             ],
@@ -115,8 +112,6 @@ class _SearchScreenState extends State<SearchScreen> {
           builder: (_,snapShot){
               if(snapShot.connectionState == ConnectionState.waiting){
                 return Center(child: CircularProgressIndicator());}
-
-                
               if(snapShot.hasError){
                 return Column(
                   children: [
@@ -137,6 +132,9 @@ class _SearchScreenState extends State<SearchScreen> {
               var newsList=snapShot.data?.results ?? [];
               // print('edit');
               // print(newsList[0]);
+              if(newsList.isEmpty){
+                return Image.asset("assets/images/no_films.png");
+              }
               return ListView.builder(
                   itemCount: newsList.length,
                   itemBuilder:(c,index){

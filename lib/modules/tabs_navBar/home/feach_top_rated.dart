@@ -34,7 +34,11 @@ class FeachTopRated extends StatelessWidget {
                         Image.network("https://image.tmdb.org/t/p/original/${listOfTopRated[index].backdropPath}"==null?
                         "https://image.tmdb.org/t/p/original/2u1YBNBlSwvBReyvI7i5z5ykQXP.jpg":"https://image.tmdb.org/t/p/original/${listOfTopRated[index].backdropPath}"
                           ,height: 150,width: 100,fit: BoxFit.fitHeight,),
-                        Icon(Icons.bookmark_add_rounded,size: 55,color: Colors.white,)
+                        InkWell(
+                            onTap: (){
+                              //todo : add to fire base
+                            },
+                            child: Image.asset("assets/images/addList.png",width: 35,height: 50,))
                       ],
                     ),
                   ),
