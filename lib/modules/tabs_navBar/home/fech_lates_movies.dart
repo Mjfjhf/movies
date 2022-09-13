@@ -45,29 +45,38 @@ class _FechLatestApiState extends State<FechLatestApi> {
                         ),
                       ),
                         Positioned(child: Stack(
+                          alignment: Alignment.topLeft,
                           children: [
-                            Image.network("https://image.tmdb.org/t/p/original/${listOfLatest.posterPath??
-                                "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"}",width: 120,height: 170,fit: BoxFit.fill,),
-                            IconButton( icon: addToWatchList(add),
-                              onPressed: () {
-                              // todo : add to watchlist in firebase
-                                if(add){
-                                  setState((){
-                                    add=false;
-                                  });
-                                }else{
-                                  setState((){
-                                    add=true;
-                                  });
-                                }
-                              },)
+                            Container(
+                              //height: 55,
+                              margin: EdgeInsets.only(top: 8,left: 10),
+                              child: Image.network("https://image.tmdb.org/t/p/original/${listOfLatest.posterPath??
+                                  "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"}",width: 120,height: 170,fit: BoxFit.fill,),
+                            ),
+                            Positioned(
+                              top: 0,left:0,
+                              child: IconButton( icon: addToWatchList(add),
+                                onPressed: () {
+                                // todo : add to watchlist in firebase
+                                  if(add){
+                                    setState((){
+                                      add=false;
+                                    });
+                                  }else{
+                                    setState((){
+                                      add=true;
+                                    });
+                                  }
+                                },),
+                            )
                           ],
                         ) ,top: 130),
 
                     ],
                   ),
                 ),
-                Text(listOfLatest?.title??'',style: TextStyle(color: Colors.white),)
+                Text(listOfLatest.title??'',style: TextStyle(color: Colors.white),),
+                Text(listOfLatest.releaseDate??'')
               ],
             ),
           );
@@ -77,9 +86,9 @@ class _FechLatestApiState extends State<FechLatestApi> {
 
   Widget addToWatchList(bool added){
     if(added){
-      return Icon(Icons.bookmark_added,size: 55,color: Colors.white,);
+      return Image.asset("assets/images/bookmark.png",width: 30,height: 50,);
     }else{
-     return Icon(Icons.bookmark_add_rounded,size: 55,color: Colors.white,);
+     return Image.asset("assets/images/addList.png",width: 35,height: 50,);
     }
   }
 }
