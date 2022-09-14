@@ -87,7 +87,7 @@ class Results {
   bool? adult;
   String? backdropPath;
   List<num>? genreIds;
-  num? id;
+  int? id;
   String? originalLanguage;
   String? originalTitle;
   String? overview;

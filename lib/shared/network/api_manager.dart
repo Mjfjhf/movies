@@ -2,8 +2,14 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:sending/models/LatestResponse.dart';
 import 'package:sending/models/TopRatedRespons.dart';
+
+import 'package:sending/modules/tabs_navBar/home/similar/simillar_response.dart';
+import 'package:sending/modules/tabs_navBar/home/top_rated/top_rated_details_response.dart';
+
+
 import '../../models/category_movie.dart';
 import '../../models/filtred_movies.dart';
+
 import '../../models/movies_respose.dart';
 import '../../modules/tabs_navBar/Search/Api_Search.dart';
 import '../components/constant.dart';
@@ -54,21 +60,45 @@ class ApiManager{
     }
 
   }
+
+
+  
+
+ 
   static Future<ApiSearch> getSearch(String q)async{
     var uri= Uri.https("api.themoviedb.org", "/3/search/movie",{
       "api_key" : "8447f6d466cb085704029ad005725822",
       "query":q
+
     });
     var getdta=await http.get(uri);
     try{
       var bodyString= getdta.body;
       var json= jsonDecode(bodyString);
+
+      
+
       var res= ApiSearch.fromJson(json);
+
       return res;
     }catch (e){
       throw e;
     }
 
+  }
+  static Future<SimillarResponse> getMoviesSimilar(int id)async{
+    var uri= Uri.https("api.themoviedb.org", "/3/movie/${id}/similar",{
+      "api_key" : "8447f6d466cb085704029ad005725822"
+    });
+    var getdta=await http.get(uri);
+    try{
+      var bodyString= getdta.body;
+      var json= jsonDecode(bodyString);
+      var res= SimillarResponse.fromJson(json);
+      return res;
+    }catch (e){
+      throw e;
+    }
   }
 
 
@@ -113,6 +143,7 @@ class ApiManager{
 
       throw e;
     }
+
   }
 }
 
