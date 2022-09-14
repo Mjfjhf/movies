@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sending/modules/tabs_navBar/home/feach_top_rated.dart';
-import 'package:sending/modules/tabs_navBar/home/fech_lates_movies.dart';
-import 'package:sending/modules/tabs_navBar/home/fetch_popular_data.dart';
+import 'package:sending/modules/tabs_navBar/home/top_rated/feach_top_rated.dart';
+import 'package:sending/modules/tabs_navBar/home/latest_movies/fech_lates_movies.dart';
+import 'package:sending/modules/tabs_navBar/home/popular_movies/fetch_popular_data.dart';
 import 'package:sending/shared/network/api_manager.dart';
 
 import '../../../models/movies_respose.dart';
@@ -20,7 +20,8 @@ class HomeScreen extends StatelessWidget {
         SizedBox(height: 10,),
         Expanded(child: FechPopularApi()),
         SizedBox(height: 5,),
-        Expanded(child: FeachTopRated()),
+        Expanded(child: FeachTopRated()
+        ),
       ],
     );
   }
