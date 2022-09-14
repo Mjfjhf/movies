@@ -1,12 +1,18 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:sending/models/LatestResponse.dart';
 import 'package:sending/models/TopRatedRespons.dart';
+
 import 'package:sending/modules/tabs_navBar/home/similar/simillar_response.dart';
 import 'package:sending/modules/tabs_navBar/home/top_rated/top_rated_details_response.dart';
 
+
+import '../../models/category_movie.dart';
+import '../../models/filtred_movies.dart';
+
 import '../../models/movies_respose.dart';
+import '../../modules/tabs_navBar/Search/Api_Search.dart';
+import '../components/constant.dart';
 
 class ApiManager{
   static Future<MoviesResponse> getMoviesPopular()async{
@@ -55,38 +61,29 @@ class ApiManager{
 
   }
 
-  // static Future<SimillarResponse> getMoviesSimillar()async{
-  //   var uri= Uri.https("api.themoviedb.org", "/3/movie/${278}/similar",{
-  //     "api_key" : "8447f6d466cb085704029ad005725822",
-  //
-  //   });
-  //   var getdta=await http.get(uri);
-  //   try{
-  //     var bodyString= getdta.body;
-  //     var json= jsonEncode(bodyString);
-  //     var res= SimillarResponse.fromJson(json);
-  //     return res;
-  //   }catch (e){
-  //     print('****************$e');
-  //     throw e;
-  //   }
-  //
-  // }
 
-  static Future<TopRatedDetailsResponse> getTopRatedDetails(int id)async{
-    var uri= Uri.https("api.themoviedb.org", "/3/movie/${id}",{
-      "api_key" : "8447f6d466cb085704029ad005725822"
+  
+
+ 
+  static Future<ApiSearch> getSearch(String q)async{
+    var uri= Uri.https("api.themoviedb.org", "/3/search/movie",{
+      "api_key" : "8447f6d466cb085704029ad005725822",
+      "query":q
+
     });
     var getdta=await http.get(uri);
     try{
       var bodyString= getdta.body;
       var json= jsonDecode(bodyString);
-      var res= TopRatedDetailsResponse.fromJson(json);
+
+      
+
+      var res= ApiSearch.fromJson(json);
+
       return res;
     }catch (e){
       throw e;
     }
-
 
   }
   static Future<SimillarResponse> getMoviesSimilar(int id)async{
@@ -100,6 +97,50 @@ class ApiManager{
       var res= SimillarResponse.fromJson(json);
       return res;
     }catch (e){
+      throw e;
+    }
+  }
+
+
+  // get Category Movies
+  static Future <CategoryMovie> getCategory() async {
+    var url = Uri.https(BASEURL, '/3/genre/movie/list', {
+      "api_key": APIKEY,
+    });
+
+    try {
+
+      var response = await http.get(url);
+
+      var bodyCategory = response.body;
+
+      var json = jsonDecode(bodyCategory);
+
+      return  CategoryMovie.fromJson(json);
+    } catch (e) {
+
+      throw e;
+    }
+  }
+
+// get Filtered Movies
+  static Future <FiltredMovies> getFiltered(String genres) async {
+    var url = Uri.https(BASEURL, '/3/discover/movie', {
+      "api_key": APIKEY,
+      "with_genres": genres,
+    });
+
+    try {
+
+      var response = await http.get(url);
+
+      var bodyCategory = response.body;
+
+      var json = jsonDecode(bodyCategory);
+
+      return  FiltredMovies.fromJson(json);
+    } catch (e) {
+
       throw e;
     }
 

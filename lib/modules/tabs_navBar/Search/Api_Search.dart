@@ -1,13 +1,16 @@
+/// page : 1
+/// results : [{"adult":false,"backdrop_path":"/5QEtCBM6aXHftr7sgFxxUUl9Ej8.jpg","genre_ids":[80,18,53,28],"id":75780,"original_language":"en","original_title":"Jack Reacher","overview":"When a gunman takes five lives with six shots, all evidence points to the suspect in custody. On interrogation, the suspect offers up a single note: \"Get Jack Reacher!\" So begins an extraordinary chase for the truth, pitting Jack Reacher against an unexpected enemy, with a skill for violence and a secret to keep.","popularity":81.828,"poster_path":"/uQBbjrLVsUibWxNDGA4Czzo8lwz.jpg","release_date":"2012-12-20","title":"Jack Reacher","video":false,"vote_average":6.6,"vote_count":5973},{"adult":false,"backdrop_path":"/ww1eIoywghjoMzRLRIcbJLuKnJH.jpg","genre_ids":[28,53],"id":343611,"original_language":"en","original_title":"Jack Reacher: Never Go Back","overview":"When Major Susan Turner is arrested for treason, ex-investigator Jack Reacher undertakes the challenging task to prove her innocence and ends up exposing a shocking conspiracy.","popularity":74.7,"poster_path":"/bvCEEs5l3ylNIgH4foqOmQk0qdi.jpg","release_date":"2016-10-19","title":"Jack Reacher: Never Go Back","video":false,"vote_average":5.9,"vote_count":4127}]
+/// total_pages : 1
+/// total_results : 2
 
-
-class TopRatedRespons {
-  TopRatedRespons({
+class ApiSearch {
+  ApiSearch({
       this.page, 
       this.results, 
       this.totalPages, 
       this.totalResults,});
 
-  TopRatedRespons.fromJson(dynamic json) {
+  ApiSearch.fromJson(dynamic json) {
     page = json['page'];
     if (json['results'] != null) {
       results = [];
@@ -37,19 +40,19 @@ class TopRatedRespons {
 }
 
 /// adult : false
-/// backdrop_path : "/tmU7GeKVybMWFButWEGl2M4GeiP.jpg"
-/// genre_ids : [18,80]
-/// id : 238
+/// backdrop_path : "/5QEtCBM6aXHftr7sgFxxUUl9Ej8.jpg"
+/// genre_ids : [80,18,53,28]
+/// id : 75780
 /// original_language : "en"
-/// original_title : "The Godfather"
-/// overview : "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge."
-/// popularity : 103.677
-/// poster_path : "/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
-/// release_date : "1972-03-14"
-/// title : "The Godfather"
+/// original_title : "Jack Reacher"
+/// overview : "When a gunman takes five lives with six shots, all evidence points to the suspect in custody. On interrogation, the suspect offers up a single note: \"Get Jack Reacher!\" So begins an extraordinary chase for the truth, pitting Jack Reacher against an unexpected enemy, with a skill for violence and a secret to keep."
+/// popularity : 81.828
+/// poster_path : "/uQBbjrLVsUibWxNDGA4Czzo8lwz.jpg"
+/// release_date : "2012-12-20"
+/// title : "Jack Reacher"
 /// video : false
-/// vote_average : 8.7
-/// vote_count : 16534
+/// vote_average : 6.6
+/// vote_count : 5973
 
 class Results {
   Results({
@@ -87,7 +90,7 @@ class Results {
   bool? adult;
   String? backdropPath;
   List<num>? genreIds;
-  int? id;
+  num? id;
   String? originalLanguage;
   String? originalTitle;
   String? overview;
