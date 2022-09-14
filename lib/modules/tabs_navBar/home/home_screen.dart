@@ -15,13 +15,14 @@ class HomeScreen extends StatelessWidget {
         Expanded(
           flex:8,
           child: FechLatestApi()),
+         
           // Relleases movies
         Expanded(
-          flex:4,
-          child: FechPopularApi()),
-       
-        const Expanded(
           flex:5,
+          child: FechPopularApi()),
+        const SizedBox(height: 20,),
+        const Expanded(
+          flex:8,
           child: FeachTopRated()),
       ],
     );

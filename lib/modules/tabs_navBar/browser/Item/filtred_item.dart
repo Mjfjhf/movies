@@ -3,78 +3,43 @@ import '../../../../models/TopRatedRespons.dart';
 import '../../../../shared/components/constant.dart';
 
 class FiltredItem extends StatelessWidget {
-  Results result;
+  Results results;
   String? name;
-  Image addList;
-  FiltredItem({required this.result, required this.name, required this.addList});
+  Image playImage;
+  FiltredItem(
+      {required this.results, required this.name, required this.playImage});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-    padding:const  EdgeInsets.only(bottom: 20,),
-    margin:const  EdgeInsets.all(20),
-    decoration: BoxDecoration(
-      color:const  Color(0xff343534),
-      borderRadius: BorderRadius.circular(12)
-    ),
-      child: Stack(
+      padding: EdgeInsets.all(8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.network(imageBaseURL +
-                  (result.backdropPath ?? 'assets/images/categoryImage.png'),
-                  fit: BoxFit.fill,
-                  
-                  ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              imageBaseURL +
+                  ((results.backdropPath) ??
+                      '/tmU7GeKVybMWFButWEGl2M4GeiP.jpg'),
+              height: 80,
+              width: 120,
+              fit: BoxFit.fitHeight,
             ),
-            const SizedBox(
-              height: 8,
+          ),
+          Container(
+            width: 180,
+            child: Text(
+              results.title ?? 'Film',
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
-            Row(
-              children: [
-               const  Icon(
-                  Icons.star,
-                  color: Color(0xffFFBB3B),
-                  size: 18,
-                ),
-               const  SizedBox(width: 8,),
-                Text('${result.voteAverage}',style:const  TextStyle(
-               color: Colors.white, fontSize: 14, decoration: TextDecoration.none),)
-              ],
-            ),
-           const  SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(result.title ?? '',style:const  TextStyle(
-                color: Colors.white, fontSize: 18, decoration: TextDecoration.none
-              ),),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Text(result.releaseDate ?? '',style:const  TextStyle(
-                color: Colors.white, fontSize: 14, decoration: TextDecoration.none,
-              ),textAlign: TextAlign.end,),
-            )
-          ],
-        ),
-        Positioned(
-           top: 0,
-           left: 0,
-           child: GestureDetector(
-            onTap: () {
-
-              // add to Watchlist
-              print('hello word');
+          ),
+          InkWell(
+            onTap: (){
+              // click watch 
             },
-            child: addList),),
+            child: playImage)
         ],
       ),
     );

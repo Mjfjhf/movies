@@ -45,7 +45,17 @@ class _FeachLatesMoviesItemState extends State<FeachLatesMoviesItem> {
               Positioned(
                 top: 0,
                 left: 0,
-                child: Image.asset('assets/images/addToList.png'),
+                child: Stack(
+                  alignment: Alignment.topCenter,
+                  children:[
+                    Image.asset('assets/images/addToList.png'),
+                    // firebase Condition
+                   const  Padding(
+                      padding:  EdgeInsets.only(top: 2),
+                      child: Icon(Icons.add, color: Colors.white,),
+                    )
+                  ], ),
+                
                 ),
               
             ],
